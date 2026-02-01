@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La Passion for Sports Equipment</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;500;700;900&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+
+    <nav>
+        <div class="logo" onclick="navigateTo('home')">
+            LA PASSION
+            <span style="display: block; font-size: 10px; color: white; letter-spacing: 2px; line-height: 1; font-family: 'Verdana', sans-serif; font-weight: normal; margin-top: -5px;">
+                FOR SPORTS EQUIPMENT
+            </span>
+        </div>
+        <div class="nav-links">
+            <button onclick="navigateTo('home')" id="nav-home" class="active">Home</button>
+            <button onclick="navigateTo('shop')" id="nav-shop">Shop</button>
+            <button onclick="navigateTo('about')" id="nav-about">About</button>
+            <button onclick="navigateTo('contact')" id="nav-contact">Contact</button>
+            <button onclick="navigateTo('admin')" id="nav-admin" style="display:none; color: var(--danger);">Dashboard</button>
+        </div>
+        
+        <div style="display: flex; align-items: center;">
+            <div class="cart-btn-wrapper">
+                <button onclick="toggleCart()" style="background:none; border:none; color:white; cursor:pointer;">
+                    <i data-lucide="shopping-cart"></i>
+                </button>
+                <span class="cart-badge" id="cartCount">0</span>
+            </div>
+            
+            <button onclick="navigateTo('login')" id="authBtn" 
+                style="margin-left: 20px; background: transparent; border: 1px solid var(--accent); 
+                color: var(--accent); padding: 8px 20px; border-radius: 4px; cursor: pointer; font-weight: bold;">
+                LOGIN
+            </button>
+        </div>
+    </nav>
+
+    <div id="home-view" class="view-section active-view">
+        <header class="hero-header">
+            <div class="hero-content">
+                <h1>UNLEASH YOUR <br><span>POTENTIAL</span></h1>
+                <p style="font-size: 1.2rem; max-width: 600px; margin: 0 auto; color: #ddd;">
+                    Premium equipment engineered for athletes who refuse to compromise. 
+                </p>
+                <button class="cta-btn" onclick="navigateTo('shop')">Start Shopping</button>
+            </div>
+        </header>
+
+        <section class="home-section" style="text-align: center;">
+            <h2 class="brand-font" style="font-size: 2.5rem; margin-bottom: 40px;">Why Choose La Passion?</h2>
+            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px;">
+                <div class="product-card" style="padding: 30px;">
+                    <i data-lucide="truck" style="color:var(--accent); width: 40px; height: 40px; margin-bottom: 20px;"></i>
+                    <h3>Fast Delivery</h3>
+                    <p style="color:gray; margin-top:10px;">Same day shipping in Cairo.</p>
+                </div>
+                <div class="product-card" style="padding: 30px;">
+                    <i data-lucide="shield-check" style="color:var(--accent); width: 40px; height: 40px; margin-bottom: 20px;"></i>
+                    <h3>Official Warranty</h3>
+                    <p style="color:gray; margin-top:10px;">100% Authentic products.</p>
+                </div>
+                <div class="product-card" style="padding: 30px;">
+                    <i data-lucide="refresh-cw" style="color:var(--accent); width: 40px; height: 40px; margin-bottom: 20px;"></i>
+                    <h3>Easy Returns</h3>
+                    <p style="color:gray; margin-top:10px;">14-day money back guarantee.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="home-section section-dark">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:30px;">
+                <h2 class="brand-font" style="font-size: 2.5rem;">Trending Now</h2>
+                <button onclick="navigateTo('shop')" style="background:none; border:1px solid var(--accent); color:var(--accent); padding:10px 20px; cursor:pointer;">VIEW ALL</button>
+            </div>
+            
+            <div class="teaser-grid" id="homeTeaserGrid">
+            </div>
+        </section>
+
+        <section class="home-section" style="background: #101216;">
+            <h2 class="brand-font" style="text-align: center; font-size: 2.5rem; margin-bottom: 40px;">Happy Customers</h2>
+            <div class="review-grid">
+                <div class="review-card">
+                    <div style="color: #ffd700; margin-bottom: 10px;">★★★★★</div>
+                    <p>"The football gear I bought is top tier. Delivery to Cairo was super fast!"</p>
+                    <p style="color:var(--accent); margin-top:10px; font-weight:bold;">- Mo Salah</p>
+                </div>
+                <div class="review-card">
+                    <div style="color: #ffd700; margin-bottom: 10px;">★★★★★</div>
+                    <p>"Finally a store that sells authentic running shoes. Highly recommended."</p>
+                    <p style="color:var(--accent); margin-top:10px; font-weight:bold;">- Sarah Ahmed</p>
+                </div>
+                <div class="review-card">
+                    <div style="color: #ffd700; margin-bottom: 10px;">★★★★★</div>
+                    <p>"Great support team helped me pick the right size. Will buy again."</p>
+                    <p style="color:var(--accent); margin-top:10px; font-weight:bold;">- Karim Ezzat</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="home-section" style="background: var(--bg-secondary);">
+            <div style="background: linear-gradient(45deg, rgba(102, 252, 241, 0.05), rgba(69, 162, 158, 0.05)); border: 1px solid var(--accent); padding: 50px; border-radius: 15px; text-align: center;">
+                <h2 class="brand-font" style="font-size: 2.5rem; margin-bottom: 20px;">Questions for the Dev Team?</h2>
+                <p style="color: var(--text-muted); margin-bottom: 30px;">
+                    Whether you have technical feedback or need support with your order, the Phase 1 team is here to help.
+                </p>
+                <button class="cta-btn" style="margin-top:0;" onclick="navigateTo('contact')">Contact Developers</button>
+            </div>
+        </section>
+    </div>
+
+    <div id="shop-view" class="view-section">
+        <div style="padding: 40px 5%; text-align: center;">
+            <h2 class="brand-font" style="font-size: 3rem; margin-bottom: 20px;">The Collection</h2>
+            <p style="color: var(--text-muted); margin-bottom: 40px;">Browse our full catalog of elite sporting goods.</p>
+            
+            <div style="margin-bottom:50px;">
+                <button onclick="filterProducts('all')" style="background:var(--accent); border:none; padding:10px 30px; font-weight:bold; cursor:pointer; border-radius: 20px; margin: 0 10px;">ALL</button>
+                <button onclick="filterProducts('gear')" style="background:transparent; color:white; border:1px solid white; padding:10px 30px; cursor:pointer; border-radius: 20px; margin: 0 10px;">GEAR</button>
+                <button onclick="filterProducts('shoes')" style="background:transparent; color:white; border:1px solid white; padding:10px 30px; cursor:pointer; border-radius: 20px; margin: 0 10px;">SHOES</button>
+            </div>
+        </div>
+
+        <div class="products-grid" id="productGrid">
+        </div>
+    </div>
+
+    <div id="about-view" class="view-section">
+        <div class="about-container">
+            <h2 class="brand-font" style="font-size: 3rem; text-align: center; margin-bottom: 60px;">Our Story</h2>
+            
+            <div class="about-split">
+                <img src="https://images.unsplash.com/photo-1526506118085-60ce8714f8c5?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" style="width:100%; border-radius:15px; border: 1px solid var(--accent);">
+                <div>
+                    <h3 style="color:var(--accent); margin-bottom:20px; font-size: 2rem;">Built for Athletes</h3>
+                    <p style="line-height: 1.8; color: var(--text-muted); font-size: 1.1rem; margin-bottom: 20px;">
+                        La Passion for Sports Equipment began with a simple mission: to make professional-grade equipment accessible to everyone. 
+                    </p>
+                    <p style="line-height: 1.8; color: var(--text-muted); font-size: 1.1rem;">
+                        Founded in 2024, we have grown from a small garage project to Egypt's leading digital sports retailer.
+                    </p>
+                </div>
+            </div>
+
+            <h2 class="brand-font" style="text-align: center; margin: 80px 0 60px 0;">The Development Team</h2>
+            
+            <div class="team-snake-container">
+                
+                <div class="snake-row">
+                    <div class="snake-card">
+                        <div class="snake-avatar">A</div>
+                        <h4>Ali Ahmed Mohamed</h4>
+                        <p style="color:var(--accent); font-size:0.9rem;">Lead Developer</p>
+                        <p style="color:gray; font-size:0.8rem; margin-top:5px;">"Responsible for system architecture and core development."</p>
+                    </div>
+                    <div class="snake-dot"></div>
+                    <div style="width:45%;"></div> 
+                </div>
+
+                <div class="snake-row">
+                    <div class="snake-card">
+                        <div class="snake-avatar">O</div>
+                        <h4>Omar Mahmoud Ali</h4>
+                        <p style="color:var(--accent); font-size:0.9rem;">Backend Engineer</p>
+                        <p style="color:gray; font-size:0.8rem; margin-top:5px;">"Manages server-side logic and database integrations."</p>
+                    </div>
+                    <div class="snake-dot"></div>
+                    <div style="width:45%;"></div>
+                </div>
+
+                <div class="snake-row">
+                    <div class="snake-card">
+                        <div class="snake-avatar">R</div>
+                        <h4>Retaj Emad Elden</h4>
+                        <p style="color:var(--accent); font-size:0.9rem;">UI/UX Designer</p>
+                        <p style="color:gray; font-size:0.8rem; margin-top:5px;">"Designs intuitive interfaces and user experiences."</p>
+                    </div>
+                    <div class="snake-dot"></div>
+                    <div style="width:45%;"></div>
+                </div>
+
+                <div class="snake-row">
+                    <div class="snake-card">
+                        <div class="snake-avatar">Y</div>
+                        <h4>Yassin Mohamed Gaber</h4>
+                        <p style="color:var(--accent); font-size:0.9rem;">QA & Security Lead</p>
+                        <p style="color:gray; font-size:0.8rem; margin-top:5px;">"Tests code & ensures security"</p>
+                    </div>
+                    <div class="snake-dot"></div>
+                    <div style="width:45%;"></div>
+                </div>
+
+                <div class="snake-row">
+                    <div class="snake-card">
+                        <div class="snake-avatar">A</div>
+                        <h4>Ahmed M. Moawed</h4>
+                        <p style="color:var(--accent); font-size:0.9rem;">Requirements Engineer</p>
+                        <p style="color:gray; font-size:0.8rem; margin-top:5px;">"Client Liaison & Analysis"</p>
+                    </div>
+                    <div class="snake-dot"></div>
+                    <div style="width:45%;"></div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div id="contact-view" class="view-section">
+        <div class="form-page-container">
+            <div class="styled-form-wrapper">
+                <h2 class="brand-font" style="text-align: center; margin-bottom: 30px; font-size: 2.5rem;">Contact Us</h2>
+                <form onsubmit="event.preventDefault(); alert('Message Sent Successfully!'); navigateTo('home');">
+                    <div class="form-group">
+                        <label>Your Name</label>
+                        <input type="text" placeholder="Name" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Email Address</label>
+                        <input type="email" placeholder="Email" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Department</label>
+                        <select>
+                            <option>Customer Support</option>
+                            <option>Sales & Wholesale</option>
+                            <option>Careers</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Message</label>
+                        <textarea rows="5" placeholder="How can we help you?" required></textarea>
+                    </div>
+                    <button class="cta-btn" style="width:100%; margin-top:0; background: var(--accent); color:black;">SEND MESSAGE</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div id="login-view" class="view-section">
+        <div class="form-page-container">
+            <div class="styled-form-wrapper" style="max-width: 400px; text-align: center;">
+                <h2 class="brand-font" style="margin-bottom: 10px; font-size: 2rem;">Welcome Back</h2>
+                <p style="color: gray; margin-bottom: 30px;">Login to your La Passion account</p>
+                
+                <form onsubmit="event.preventDefault(); performLogin();">
+                    <div class="form-group" style="text-align: left;">
+                        <label>Email</label>
+                        <input type="email" id="loginEmail" placeholder="Email" required>
+                    </div>
+                    <div class="form-group" style="text-align: left;">
+                        <label>Password</label>
+                        <input type="password" id="loginPass" placeholder="Password" required>
+                    </div>
+                    <button class="cta-btn" style="width:100%; margin-top:10px; background: var(--accent); color:black;">LOGIN</button>
+                </form>
+                
+                <p style="margin-top: 20px; font-size: 0.9rem; color: gray;">
+                    Don't have an account? <a href="#" style="color: var(--accent);">Sign Up</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div id="checkout-view" class="view-section">
+        <div class="checkout-container">
+            
+            <div class="checkout-summary-wrapper">
+                <h3 class="brand-font" style="margin-bottom: 25px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 15px;">Order Summary</h3>
+                <div id="checkoutItemsList">
+                </div>
+                <div style="margin-top: 20px; font-size: 1.2rem; font-weight: bold; display: flex; justify-content: space-between;">
+                    <span>Total:</span>
+                    <span id="checkoutPageTotal" style="color: var(--accent);">0 EGP</span>
+                </div>
+            </div>
+
+            <div class="styled-form-wrapper" style="width: 100%; max-width: 100%; margin-top: 0;">
+                <h2 class="brand-font" style="margin-bottom: 30px; border-bottom: 1px solid #333; padding-bottom: 10px;">Payment Details</h2>
+                <form onsubmit="event.preventDefault(); processOrder();">
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                        <div class="form-group"><label>First Name</label><input type="text" required></div>
+                        <div class="form-group"><label>Last Name</label><input type="text" required></div>
+                    </div>
+                    <div class="form-group"><label>Shipping Address</label><input type="text" placeholder="Address" required></div>
+                    <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 20px;">
+                        <div class="form-group"><label>City</label><input type="text" placeholder="City" required></div>
+                        <div class="form-group"><label>Zip Code</label><input type="text" placeholder="Zip Code" required></div>
+                    </div>
+                    <div style="margin: 30px 0; border-top: 1px solid #333; padding-top: 20px;">
+                        <div class="form-group"><label>Card Number</label><input type="text" placeholder="0000 0000 0000 0000"></div>
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                            <div class="form-group"><label>Expiry</label><input type="text" placeholder="MM/YY"></div>
+                            <div class="form-group"><label>CVC</label><input type="text" placeholder="123"></div>
+                        </div>
+                    </div>
+                    <button class="cta-btn" style="width:100%; background: var(--accent); color:black;">CONFIRM ORDER</button>
+                    <button type="button" onclick="navigateTo('shop')" style="width:100%; background:none; border:none; color:gray; margin-top:10px; cursor:pointer;">Cancel</button>
+                </form>
+            </div>
+
+        </div>
+    </div>
+
+    <div id="admin-view" class="view-section">
+        <div style="padding: 40px 5%;">
+            <h2 class="brand-font" style="font-size: 3rem; margin-bottom: 40px; color: var(--danger);">Admin Dashboard</h2>
+            
+            <div style="display: grid; grid-template-columns: 1fr 2fr; gap: 50px;">
+                <div class="styled-form-wrapper" style="height: fit-content;">
+                    <h3 style="margin-bottom: 20px;">Add New Product</h3>
+                    <form onsubmit="event.preventDefault(); addNewProduct();">
+                        <div class="form-group">
+                            <label>Product Name</label>
+                            <input type="text" id="adminProdName" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Price (EGP)</label>
+                            <input type="number" id="adminProdPrice" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Category</label>
+                            <select id="adminProdCat">
+                                <option value="gear">Gear</option>
+                                <option value="shoes">Shoes</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Image URL</label>
+                            <input type="text" id="adminProdImg" placeholder="https://..." required>
+                        </div>
+                        <button class="cta-btn" style="width:100%; margin-top:0;">ADD PRODUCT</button>
+                    </form>
+                </div>
+
+                <div>
+                    <h3 style="margin-bottom: 20px;">Inventory Management</h3>
+                    <div class="products-grid" id="adminProductList" style="padding:0; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-col">
+                <div class="logo" style="margin-bottom:20px; font-size: 24px;">LA PASSION <span style="font-size: 0.5em; color: white;">FOR SPORTS EQUIPMENT</span></div>
+                <p style="color:#888;">Empowering athletes with the best gear in the game. Built for speed, strength, and endurance.</p>
+            </div>
+            <div class="footer-col">
+                <h4>QUICK LINKS</h4>
+                <a href="#" onclick="navigateTo('home')">Home</a>
+                <a href="#" onclick="navigateTo('shop')">Shop</a>
+                <a href="#" onclick="navigateTo('about')">About Us</a>
+                <a href="#" onclick="navigateTo('contact')">Contact</a>
+            </div>
+            <div class="footer-col">
+                <h4>CONTACT</h4>
+                <a href="#"><i data-lucide="mail" style="width:16px; display:inline"></i> support@lapassion-sports.com</a>
+                <a href="#"><i data-lucide="phone" style="width:16px; display:inline"></i> 01119874431</a>
+                <a href="#"><i data-lucide="map-pin" style="width:16px; display:inline"></i> Cairo, Egypt</a>
+            </div>
+        </div>
+        <div style="text-align:center; margin-top:50px; color:#555; font-size:0.9rem;">
+            &copy; 2025 La Passion for Sports Equipment. Designed by Ali.
+        </div>
+    </footer>
+
+    <div class="cart-overlay" onclick="toggleCart()"></div>
+    <div class="cart-sidebar">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px;">
+            <h2 class="brand-font">Your Cart</h2>
+            <button onclick="toggleCart()" style="background:none; border:none; color:white; cursor:pointer"><i data-lucide="x"></i></button>
+        </div>
+        <div id="cartItems" style="flex-grow: 1; overflow-y: auto;"></div>
+        <div style="border-top: 1px solid #333; padding-top: 20px;">
+            <div style="display:flex; justify-content:space-between; margin-bottom: 20px; font-size: 1.2rem; font-weight:bold;">
+                <span>Total:</span><span id="cartTotal">0 EGP</span>
+            </div>
+            <button class="cta-btn" onclick="goToCheckout()" style="width:100%; background: var(--accent); color:black; margin-top:0;">PROCEED TO CHECKOUT</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
